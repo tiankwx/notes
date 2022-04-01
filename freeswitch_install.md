@@ -85,35 +85,18 @@ make install
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 LANG=en_US.UTF-8
-
-yum install -y git alsa-lib-devel autoconf automake bison broadvoice-devel bzip2 curl-devel libdb4-devel e2fsprogs-devel erlang flite-devel g722_1-devel gcc-c++ gdbm-devel gnutls-devel ilbc2-devel ldns-devel libcodec2-devel libidn-devel libjpeg-devel libmemcached-devel libogg-devel libsilk-devel libsndfile-devel libtheora-devel libtiff-devel libtool libuuid-devel libvorbis-devel libxml2-devel lua-devel lzo-devel mongo-c-driver-devel ncurses-devel net-snmp-devel openssl-devel opus-devel pcre-devel perl perl-ExtUtils-Embed pkgconfig portaudio-devel postgresql-devel python-devel python-devel soundtouch-devel speex-devel unbound-devel unixODBC-devel wget which yasm zlib-devel libshout-devel libmpg123-devel lame-devel rpm-build libX11-devel libyuv-devel sqlite* libcurl* speex speex-devel speexdsp-devel libedit-devel yasm
-
-
-
-
-
+yum install -y epel-release
 rpm -ivh http://repo.okay.com.mx/centos/8/x86_64/release/okay-release-1-5.el8.noarch.rpm
-dnf localinstall https://pkgs.dyn.su/el8/base/x86_64/raven-release-1.0-2.el8.noarch.rpm
+dnf localinstall -y https://pkgs.dyn.su/el8/base/x86_64/raven-release-1.0-2.el8.noarch.rpm
 yum -y update && yum -y upgrade
-dnf install -y platform-python-devel
-dnf install -y broadvoice-devel
-dnf install -y g722_1-devel
-dnf install -y ilbc2-devel
-dnf install -y libcodec2-devel
-dnf install -y libsilk-devel
-dnf install -y libdb4-devel
-dnf install -y spandsp-devel
-dnf install -y sofia-sip
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:${PKG_CONFIG_PATH}
-ldconfig
-dnf install -y sofia-sip-devel
-dnf install -y libks
-dnf install -y libks-devel
-dnf install -y signalwire-client-c-devel
-dnf --enablerepo=raven-multimedia install -y ffmpeg-devel
 
-cd /usr/local/src && wget https://gitee.com/FreeSWITCHs/download/raw/master/pcre-8.45.zip && unzip pcre-8.45.zip && cd pcre-8.45
-./configure 
+yum install -y git alsa-lib-devel autoconf automake bison broadvoice-devel bzip2 curl-devel libdb4-devel e2fsprogs-devel erlang flite-devel g722_1-devel gcc-c++ gdbm-devel gnutls-devel ilbc2-devel ldns-devel libcodec2-devel libidn-devel libjpeg-devel libmemcached-devel libogg-devel libsilk-devel libsndfile-devel libtheora-devel libtiff-devel libtool libuuid-devel libvorbis-devel libxml2-devel lua-devel lzo-devel mongo-c-driver-devel ncurses-devel net-snmp-devel openssl-devel opus-devel pcre-devel perl perl-ExtUtils-Embed pkgconfig portaudio-devel postgresql-devel soundtouch-devel speex-devel unbound-devel unixODBC-devel wget which yasm zlib-devel libshout-devel libmpg123-devel lame-devel rpm-build libX11-devel sqlite* libcurl-devel speexdsp-devel libedit-devel 
+
+dnf install -y spandsp-devel  sofia-sip-devel libks-devel signalwire-client-c-devel
+dnf install libav-devel -y
+
+cd /usr/local/src && git clone git clone https://gitee.com/FreeSWITCHs/x264.git && cd x264
+./configure --enable-shared --enable-static --enable-debug --disable-asm
 make && make install
 
 cd /usr/local/src
@@ -126,6 +109,9 @@ make install
 make cd-sounds-install
 make cd-moh-install
 
+# 完成安装之后，设置符号链接：
+ln -sf /usr/local/freeswitch/bin/freeswitch /usr/local/bin/
+ln -sf /usr/local/freeswitch/bin/fs_cli /usr/local/bin/
 
 
 ```
