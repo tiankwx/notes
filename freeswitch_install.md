@@ -78,8 +78,8 @@ make install
 ############################################################################################################################################
 
 ```
-
-## AnolisOS8.2 第三方源编译安装 - TEST
+---
+## AnolisOS8.2 第三方源编译安装最新版本 - TEST
 ```
 #!/bin/bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
@@ -113,9 +113,58 @@ make cd-moh-install
 ln -sf /usr/local/freeswitch/bin/freeswitch /usr/local/bin/
 ln -sf /usr/local/freeswitch/bin/fs_cli /usr/local/bin/
 
+```
+---
+## AnolisOS8.2 第三方源编译安装 - TEST
+### FreeSWITCH Version 1.10.7-release~64bit (-release 64bit)
+```
+#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
+LANG=en_US.UTF-8
+yum install -y epel-release wget zip unzip
+rpm -ivh http://repo.okay.com.mx/centos/8/x86_64/release/okay-release-1-5.el8.noarch.rpm
+yum -y update && yum -y upgrade
+dnf install freeswitch
+cd ~
+wget https://gitee.com/FreeSWITCHs/download/raw/master/conf-minimal.zip
+unzip -d conf/ -o conf-minimal.zip
+
+
 
 ```
-
+### 安装的依赖
+```
+alsa-lib-1.2.1.2-3.el8.x86_64
+flac-libs-1.3.2-9.el8.x86_64
+freeswitch-1:1.10.7-1.el8.x86_64
+freeswitch-cli-1:1.10.7-1.el8.x86_64
+gperftools-libs-1:2.7-9.el8.x86_64
+gsm-1.0.17-5.el8.x86_64
+libfvad-1.1.0-1.el8.x86_64
+libgumbo1-0.10.1-1.el8.x86_64
+libjwt-1.13.1-1.el8.x86_64
+libks-1.7.0-1.el8.x86_64
+libogg-2:1.3.2-10.el8.x86_64
+libpq-12.7-1.el8.x86_64
+libsndfile-1.0.28-10.el8.x86_64
+libstirshaken-0.0.0-0.4.el8.x86_64
+libtpl-1.5-9.el8.x86_64
+libunwind-1.3.1-3.el8.x86_64
+libvorbis-1:1.3.6-2.el8.x86_64
+python2-2.7.17-1.0.1.module+el8.2.0+10127+a910aa2a.x86_64
+python2-libs-2.7.17-1.0.1.module+el8.2.0+10127+a910aa2a.x86_64
+python2-pip-9.0.3-16.module+el8.2.0+10127+a910aa2a.noarch
+python2-pip-wheel-9.0.3-16.module+el8.2.0+10127+a910aa2a.noarch
+python2-setuptools-39.0.1-11.0.1.module+el8.2.0+10127+a910aa2a.noarch
+python2-setuptools-wheel-39.0.1-11.0.1.module+el8.2.0+10127+a910aa2a.noarch
+sofia-sip-1.13.6-1.el8.x86_64
+spandsp-3.0.0-1.el8.x86_64
+speex-1.2.0-1.el8.x86_64
+speexdsp-1.2-0.13.rc3.el8.x86_64
+unixODBC-2.3.7-1.el8.x86_64
+```
+---
 ## AnolisOS7.9 Install
 ```
 # 此为自建Repo，有限制无法访问
@@ -126,7 +175,7 @@ yum -y update && yum -y upgrade
 yum install -y freeswitch-config-vanilla freeswitch-lang-* freeswitch-sounds-*
 systemctl enable freeswitch
 ```
-
+---
 ## 官方安装方法
 ### 要注册帐号，获取Token
 ### [安装说明](https://freeswitch.org/confluence/display/FREESWITCH/CentOS+7+and+RHEL+7)
