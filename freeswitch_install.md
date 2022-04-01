@@ -127,7 +127,7 @@ rpm -ivh http://repo.okay.com.mx/centos/8/x86_64/release/okay-release-1-5.el8.no
 yum -y update && yum -y upgrade
 dnf install freeswitch
 cd ~
-wget https://gitee.com/FreeSWITCHs/download/raw/master/conf-minimal.zip
+wget https://cdn.jsdelivr.net/gh/tiankwx/notes/download/202204/conf-minimal.zip
 unzip -d conf/ -o conf-minimal.zip
 
 
