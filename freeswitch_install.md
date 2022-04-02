@@ -6,11 +6,8 @@
 # FreeSWITCH Version 1.10.8-dev+git~20220328T145617Z~8f9f5c1c3e~64bit (git 8f9f5c1 2022-03-28 14:56:17Z 64bit)
 
 yum install -y epel-release
-yum install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
 yum groupinstall "Development Tools"
-yum install libuuid-devel libatomic openssl-devel libedit*
-yum install speex speex-devel speexdsp-devel libcurl-devel libtiff-devel libjpeg-devel lua-devel libuuid-devel sqlite* cmake ldns-devel libidn-devel unbound-devel ffmpeg ffmpeg-devel wget
-yum -y install opus-devel libsndfile-devel
+yum install speex-devel speexdsp-devel libcurl-devel libtiff-devel libjpeg-devel lua-devel libuuid-devel sqlite* cmake ldns-devel libidn-devel unbound-devel ffmpeg-devel wget libatomic openssl-devel libedit* opus-devel libsndfile-devel
 yum -y update && yum -y upgrade
 dnf install libpq-devel
 
@@ -79,7 +76,9 @@ make install
 
 ```
 ---
-## AnolisOS8.2 第三方源编译安装最新版本 - TEST
+## AnolisOS8.2 编译安装最新版本
+### Linux AnolisOS82 4.18.0-193.70.1.an8_2.x86_64 #1 SMP Wed Dec 1 17:52:32 CST 2021 x86_64 x86_64 x86_64 GNU/Linux
+### FreeSWITCH Version 1.10.8-dev+git~20220328T145617Z~8f9f5c1c3e~64bit (git 8f9f5c1 2022-03-28 14:56:17Z 64bit)
 ```
 #!/bin/bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
@@ -100,7 +99,7 @@ cd /usr/local/src && git clone git clone https://gitee.com/FreeSWITCHs/x264.git 
 make && make install
 
 cd /usr/local/src
-git clone --depth=1 https://gitee.com/nwaycn/freeswitch.git
+git clone https://gitee.com/nwaycn/freeswitch.git
 cd /usr/local/src/freeswitch
 ./bootstrap.sh -j
 ./configure
@@ -115,7 +114,8 @@ ln -sf /usr/local/freeswitch/bin/fs_cli /usr/local/bin/
 
 ```
 ---
-## AnolisOS8.2 第三方源编译安装 - TEST
+## AnolisOS8.2 第三方源包安装
+### Linux AnolisOS82 4.18.0-193.70.1.an8_2.x86_64 #1 SMP Wed Dec 1 17:52:32 CST 2021 x86_64 x86_64 x86_64 GNU/Linux
 ### FreeSWITCH Version 1.10.7-release~64bit (-release 64bit)
 ```
 #!/bin/bash
@@ -125,7 +125,7 @@ LANG=en_US.UTF-8
 yum install -y epel-release wget zip unzip
 rpm -ivh http://repo.okay.com.mx/centos/8/x86_64/release/okay-release-1-5.el8.noarch.rpm
 yum -y update && yum -y upgrade
-dnf install freeswitch
+dnf install -y freeswitch
 cd ~
 rm -rf /etc/freeswitch
 git clone https://gitee.com/FreeSWITCHs/freeswitch-minimal-conf.git /etc/freeswitch/
