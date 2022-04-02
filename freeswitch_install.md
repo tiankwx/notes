@@ -127,10 +127,8 @@ rpm -ivh http://repo.okay.com.mx/centos/8/x86_64/release/okay-release-1-5.el8.no
 yum -y update && yum -y upgrade
 dnf install freeswitch
 cd ~
-wget https://cdn.jsdelivr.net/gh/tiankwx/notes/download/202204/conf-minimal.zip
-unzip -d conf/ -o conf-minimal.zip
-
-
+rm -rf /etc/freeswitch
+git clone https://gitee.com/FreeSWITCHs/freeswitch-minimal-conf.git /etc/freeswitch/
 
 ```
 ### 安装的依赖
@@ -167,10 +165,10 @@ unixODBC-2.3.7-1.el8.x86_64
 ---
 ## AnolisOS7.9 Install
 ```
-# 此为自建Repo，有限制无法访问
-yum install -y http://qiniu.kodo.nationality.shapeing.com/repo/yum/centos-release/freeswitch-release-repo-0-1.noarch.rpm epel-release
+# 使用自建Repo安装
+yum install -y http://qiniu.kodo.nationality.test.com/repo/yum/centos-release/freeswitch-release-repo-0-1.noarch.rpm epel-release
 rm -rf /etc/yum.repos.d/freeswitch-release.repo
-wget -O /etc/yum.repos.d/freeswitch-release.repo http://qiniu.kodo.nationality.shapeing.com/repo/yum/centos-release/freeswitch-release.repo
+wget -O /etc/yum.repos.d/freeswitch-release.repo http://qiniu.kodo.nationality.test.com/repo/yum/centos-release/freeswitch-release.repo
 yum -y update && yum -y upgrade
 yum install -y freeswitch-config-vanilla freeswitch-lang-* freeswitch-sounds-*
 systemctl enable freeswitch
