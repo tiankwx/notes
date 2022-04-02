@@ -5,11 +5,11 @@
 # Linux AnolisOS82 4.18.0-193.60.2.an8_2.x86_64 #1 SMP Tue Aug 17 16:16:36 CST 2021 x86_64 x86_64 x86_64 GNU/Linux
 # FreeSWITCH Version 1.10.8-dev+git~20220328T145617Z~8f9f5c1c3e~64bit (git 8f9f5c1 2022-03-28 14:56:17Z 64bit)
 
-yum install -y epel-release
-yum groupinstall "Development Tools"
-yum install speex-devel speexdsp-devel libcurl-devel libtiff-devel libjpeg-devel lua-devel libuuid-devel sqlite* cmake ldns-devel libidn-devel unbound-devel ffmpeg-devel wget libatomic openssl-devel libedit* opus-devel libsndfile-devel
+# yum install -y epel-release
+yum groupinstall -y "Development Tools"
+yum install -y speex-devel speexdsp-devel libcurl-devel libtiff-devel libjpeg-devel lua-devel libuuid-devel cmake ldns-devel libidn-devel unbound-devel wget libatomic openssl-devel libedit* opus-devel libsndfile-devel sqlite-devel
+dnf install -y libpq-devel yasm -y
 yum -y update && yum -y upgrade
-dnf install libpq-devel
 
 # 安装过程中根据出错信息安装下面的依赖
 
@@ -64,8 +64,6 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib64/pkgconfig:${PKG
 ldconfig
 ############################################################################################################################################
 # Neither yasm nor nasm have been found. See the prerequisites section in the README for more info.
-cd /usr/local/src && git clone https://gitee.com/FreeSWITCHs/yasm.git && cd yasm && ./autogen.sh && make && make install
-
 curl http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz >yasm.tar.gz
 tar xzvf yasm.tar.gz
 cd yasm-1.2.0
@@ -91,7 +89,7 @@ yum -y update && yum -y upgrade
 
 yum install -y git alsa-lib-devel autoconf automake bison broadvoice-devel bzip2 curl-devel libdb4-devel e2fsprogs-devel erlang flite-devel g722_1-devel gcc-c++ gdbm-devel gnutls-devel ilbc2-devel ldns-devel libcodec2-devel libidn-devel libjpeg-devel libmemcached-devel libogg-devel libsilk-devel libsndfile-devel libtheora-devel libtiff-devel libtool libuuid-devel libvorbis-devel libxml2-devel lua-devel lzo-devel mongo-c-driver-devel ncurses-devel net-snmp-devel openssl-devel opus-devel pcre-devel perl perl-ExtUtils-Embed pkgconfig portaudio-devel postgresql-devel soundtouch-devel speex-devel unbound-devel unixODBC-devel wget which yasm zlib-devel libshout-devel libmpg123-devel lame-devel rpm-build libX11-devel sqlite* libcurl-devel speexdsp-devel libedit-devel 
 
-dnf install -y spandsp-devel  sofia-sip-devel libks-devel signalwire-client-c-devel
+dnf install -y spandsp-devel sofia-sip-devel libks-devel signalwire-client-c-devel
 dnf install libav-devel -y
 
 cd /usr/local/src && git clone git clone https://gitee.com/FreeSWITCHs/x264.git && cd x264
