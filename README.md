@@ -8,3 +8,5 @@
 
 . [与 Cloudflare 代理兼容的网络端口](/教育学习/技术知识/网络相关/Cloudflare/network-port.md) - 2022-04-08
 
+. [CloudFlare Tunnel 简单教程](/教育学习/技术知识/网络相关/Cloudflare/cloudflared-tunnel.md) - 2022-04-08
+
