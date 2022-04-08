@@ -20,12 +20,15 @@ $ wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/clo
 
 ## 使用
 1. 登陆
-- 打开浏览器窗口并提示您登录 Cloudflare 帐户。登录您的帐户后，选择您的主机名。
-  
-```$ cloudflared tunnel login```
+- 打开浏览器窗口并提示您登录 Cloudflare 帐户。
+```
+$ cloudflared tunnel login
+```
 
-2. 选择一个域名，授权给Argo Tunnel
+2. 登录您的帐户后，选择您的主机名。选择一个域名，授权给Tunnel；
+
 3. 常用命令
+
 ```
 创建隧道：cloudflared tunnel create 隧道名
 删除隧道：cloudflared tunnel delete 隧道名
@@ -34,10 +37,11 @@ $ wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/clo
 运行隧道：cloudflared tunnel run (使用默认配置文件)
          cloudflared tunnel --config path/config.yaml run (指定配置文件)
 ```
-4. 参考配置文件
-```
-# 默认配置文件位置： /root/.cloudflared/config.yml
 
+4. 参考配置文件
+- 默认配置文件位置： /root/.cloudflared/config.yml
+
+```
 tunnel: ad15adb1-a4cb-462a-92df-185de86e6666
 credentials-file: /root/.cloudflared/ad15adb1-a4cb-462a-92df-185de86e6666.json
 ingress:
