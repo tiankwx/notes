@@ -30,15 +30,18 @@ $ cloudflared tunnel login
 3. 常用命令
 
 ```
+
 创建隧道：cloudflared tunnel create 隧道名
 删除隧道：cloudflared tunnel delete 隧道名
 列出隧道：cloudflared tunnel list
 配置隧道：cloudflared tunnel route dns 隧道名 [CNAME 记录名称].[接入 CLoudflare 的域名]
 运行隧道：cloudflared tunnel run (使用默认配置文件)
          cloudflared tunnel --config path/config.yaml run (指定配置文件)
+
 ```
 
 4. 参考配置文件
+
 - 默认配置文件位置： /root/.cloudflared/config.yml
 
 ```
@@ -50,4 +53,15 @@ ingress:
   - hostname: xx.xxx.com
     service: http://192.168.1.17:80
   - service: http_status:404
+```
+
+5. 安装成服务
+   
+```
+# 安装成服务
+cloudflared service install
+# 启动服务
+systemctl start cloudflared
+# 查看服务状态
+systemctl status cloudflared
 ```
