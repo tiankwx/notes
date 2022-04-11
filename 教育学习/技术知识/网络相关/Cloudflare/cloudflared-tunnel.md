@@ -65,3 +65,7 @@ systemctl start cloudflared
 # 查看服务状态
 systemctl status cloudflared
 ```
+
+## 2022-04-11
+安装服务后，默认配置路径会被修改成/etc/cloudflared/config.yml
+可以增加一个软链接，或直接到etc目录修改；
